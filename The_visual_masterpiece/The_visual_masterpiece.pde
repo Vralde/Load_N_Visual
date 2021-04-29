@@ -4,27 +4,28 @@ void setup(){
   size(1800,1000);
   background(0);
   table = loadTable("https://raw.githubusercontent.com/jakevdp/data-USstates/master/state-areas.csv","header");
- /*
-    table = new Table();
-    table.addColumn("state");
- */
- 
- //println(table.getRowCount());
 
-  for(TableRow r: table.rows()) {
+ 
+ //Table.sort
+ 
+ for(TableRow r: table.rows()) {
     String s = r.getString ("state");
     int i = r.getInt("area (sq. mi)");
-    println("state:",  s,"Areal:", i,"sq. miles");
+    println("state:",  s," Area:", i,"sq. miles");
     
 
 
     
     x = (i / 500);
     y += 15;
-    rect(120, y, x, 10);   
+    if(x > 2){
+      rect(120, y, x, 10);   
+    }else{
+      rect(120,y,2,10);
+    }
     
-    text(s,0,y+5);
-    
+    text(s,0,y+8);
+    text(i + " sq. miles", x+125, y+8);
     
 
     
