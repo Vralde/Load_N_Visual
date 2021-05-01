@@ -4,7 +4,6 @@ int x, y;
 
 Button button = new Button(1600, 600, 100, 100, "Sort data");
 
-
 void setup(){
   
   size(1800,1000);
@@ -18,9 +17,12 @@ void setup(){
 void draw(){
   clear();
   fill(255);
+  
   button.display();
-  if (button.active == false){
-    for(TableRow r: table.rows()) {
+  
+  if (!button.active){
+    for(TableRow r: table.rows()){
+      
       String s = r.getString ("state");
       int i = r.getInt("area (sq. mi)");
       println("state:",  s," Area:", i,"sq. miles");
@@ -36,8 +38,10 @@ void draw(){
       text(s,0,y+8);
       text(i + " sq. miles", x+175, y+10);
     }
+    
   }else{
     sortedTable.sortReverse("area (sq. mi)");
+    
     for(TableRow r: sortedTable.rows()) {
       String s = r.getString ("state");
       int i = r.getInt("area (sq. mi)");
@@ -45,21 +49,20 @@ void draw(){
       
       x = (i / 500);
       y += 17;
+      
       if(x > 2){
         rect(170, y, x, 10);   
       }else{
         rect(170,y,2,10);
       }
+      
       textSize(15);
       text(s,0,y+8);
       text(i + " sq. miles", x+175, y+10);
     }
   }
-   
   y = 0;
 }
-
-
 
 void mousePressed(){
   println("pressCheck");

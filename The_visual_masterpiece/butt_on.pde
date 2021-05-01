@@ -15,7 +15,8 @@ class Button{
     push();
       textAlign(CENTER, CENTER);
       strokeWeight(3);
-      if (active == false){
+      
+      if (!active){
         stroke(255);
         fill(255);
         rect(x, y, w, h);
@@ -28,25 +29,12 @@ class Button{
         fill(255);
         text(text, x+w/2, y+h/2);
       }
-
     pop();
   }
   
   void click(){
     if (mouseX > x && mouseX < x+w && mouseY > y && mouseY < y+h){ 
-      println("box clicked");
-      if (active == false){
-        active = true;
-        println("it true now");
-      }else{
-        active = false;
-        println("it false now");
-      }
-        
-      //table.sort(?);
-      
+      active = !active;
     }
-    
   }
-  
 }
