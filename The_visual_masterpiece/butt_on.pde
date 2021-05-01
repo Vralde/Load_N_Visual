@@ -14,9 +14,21 @@ class Button{
   void display(){
     push();
       textAlign(CENTER, CENTER);
-      rect(x, y, w, h);
-      fill(0);
-      text(text, x+w/2, y+h/2);
+      strokeWeight(3);
+      if (active == false){
+        stroke(255);
+        fill(255);
+        rect(x, y, w, h);
+        fill(0);
+        text(text, x+w/2, y+h/2);
+      }else{
+        stroke(255);
+        fill(0);
+        rect(x, y, w, h);
+        fill(255);
+        text(text, x+w/2, y+h/2);
+      }
+
     pop();
   }
   
